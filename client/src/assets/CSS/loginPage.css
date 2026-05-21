@@ -1,0 +1,10 @@
+* {
+    margin: 0;
+    padding: 0;
+    font-family: Arial, Helvetica, sans-serif;
+}
+.main {
+    width: 200px;
+    height: 400px;
+    border: solid 1px black;
+}
