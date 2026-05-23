@@ -13,7 +13,7 @@ function LandingPage(){
             </div>
         </header>
         <div className="main">
-            
+            <h1>TODOLIST</h1>
         </div>
         </>
     )

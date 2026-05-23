@@ -3,6 +3,7 @@ import db from './src/configs/database.js'
 import AuthRoutes from './src/routes/Auth.Routes.js'
 import cors from 'cors'
 import session from 'express-session'
+import { getUser } from './src/controllers/Auth.Controller.js'
 const app = express();
 
 app.use(express.urlencoded({extended: false}))
@@ -16,12 +17,12 @@ app.use(session({
     resave : false,
     saveUninitialized : false,
     cookie : {
-        maxAge : 1000 * 60 * 60,
         httpOnly: true
     }
 }))
 
 app.use('/auth/', AuthRoutes)
+app.use('/home', getUser)
 
 
 app.listen(3000,()=>{
