@@ -1,5 +1,5 @@
 import { useEffect, useState } from "react"
-import { Link, useNavigate } from "react-router-dom"
+import { useNavigate } from "react-router-dom"
 
 function HomePage(){
     const navigate = useNavigate()
@@ -31,6 +31,20 @@ function HomePage(){
 
     }, [])
 
+    const handleLogout = async () => {
+        try {
+            const response = await fetch('http://localhost:3000/auth/logout', {
+                credentials: 'include'
+            })
+            const data = await response.json()
+            if (!data.loggedIn) {
+                navigate('/')
+            }
+        } catch (err) {
+            console.error('Logout failed:', err)
+        }
+    }
+
     return (
         <>
             <h1>
@@ -39,7 +53,7 @@ function HomePage(){
 
             <input type="text" />
             <button type="submit">add</button>
-            <Link to='/auth/logout'><button>LOGOUT</button></Link>
+            <button onClick={handleLogout}>LOGOUT</button>
         </>
     )
 }
